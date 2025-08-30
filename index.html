@@ -7,46 +7,55 @@
   <style>
     :root{
       --bg:#0b0f17; --panel:#0f1624; --fg:#e8eef7; --muted:#9bb0c9; --grid:#1a2332;
-      --up:#2ecc71; --down:#e74c3c; --accent:#4da3ff; --warn:#ffd166;
-      --chip:#142035; --chip-b:#2b3850;
+      --accent:#4da3ff; --chip:#142035;
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
-    /* Header / hero */
+
+    /* Header */
     header{display:flex;align-items:center;gap:22px;padding:18px 0 8px;border-bottom:1px solid var(--grid)}
     .brand{font-weight:700;letter-spacing:.2px}
     .brand small{display:block;color:var(--muted);font-weight:500}
     .spacer{flex:1}
     .contact a{margin-left:14px}
-    .hero{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:center;padding:24px 0}
-    .avatar{width:120px;height:120px;border-radius:50%;border:2px solid var(--grid);object-fit:cover;background:#141a26}
-    h1{margin:0 0 6px;font-size:28px}
-    .subtitle{color:var(--muted);margin-bottom:14px}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .chip{background:var(--chip);border:1px solid var(--grid);padding:6px 10px;border-radius:999px;font-size:12px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:140px 1fr;gap:22px;align-items:center;padding:26px 0}
+    .avatar{width:140px;height:140px;border-radius:50%;border:2px solid var(--grid);object-fit:cover;background:#141a26}
+    h1{margin:0 0 6px;font-size:30px}
+    .subtitle{color:var(--muted);margin-bottom:12px}
+
     /* Section titles */
-    h2{margin:24px 0 12px;font-size:22px}
-    /* Slider */
+    h2{margin:26px 0 12px;font-size:22px}
+
+    /* Slider / project */
     .slider{position:relative;background:var(--panel);border:1px solid var(--grid);border-radius:16px;padding:18px;overflow:hidden}
     .slide{display:grid;grid-template-columns: 1.1fr 1fr;gap:24px;align-items:center}
     .thumb{aspect-ratio:16/9;background:#0e1421;border:1px solid var(--grid);border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
     .thumb img{width:100%;height:100%;object-fit:cover;opacity:.95}
     .slide h3{margin:.25rem 0 .5rem;font-size:20px}
-    .bullets{color:var(--muted);margin:10px 0 14px}
+    .bullets{color:var(--muted);margin:10px 0 14px;padding-left:18px}
     .bullets li{margin:.25rem 0}
-    .cta{display:flex;gap:10px}
-    .btn{background:#18304d;border:1px solid var(--grid);color:#dce9ff;padding:8px 12px;border-radius:10px;display:inline-flex;align-items:center;gap:6px}
+    .cta{display:flex;gap:10px;justify-content:center}
+    .btn{background:#18304d;border:1px solid var(--grid);color:#dce9ff;padding:10px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:6px}
     .btn:hover{filter:brightness(1.1);text-decoration:none}
+
+    /* Chips section */
+    .chips-section{margin-top:28px;text-align:center}
+    .chips{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:100%;margin-top:10px}
+    .chip{background:var(--chip);border:1px solid var(--grid);padding:6px 10px;border-radius:999px;font-size:12px;white-space:nowrap}
+
     /* Footer */
     footer{margin:30px 0 10px;color:var(--muted);font-size:14px}
+
     /* Responsive */
     @media (max-width: 900px){
       .slide{grid-template-columns:1fr;gap:14px}
-      .hero{grid-template-columns:90px 1fr}
-      .avatar{width:90px;height:90px}
+      .hero{grid-template-columns:110px 1fr}
+      .avatar{width:110px;height:110px}
     }
   </style>
 </head>
@@ -54,7 +63,10 @@
   <div class="wrap">
 
     <header>
-      <div class="brand">Denis Kerec <small>Lead BI Engineer — Realtime Analytics</small></div>
+      <div class="brand">
+        Denis Kerec
+        <small>Lead BI Engineer — Realtime Analytics / Reporting / Data Pipelines</small>
+      </div>
       <div class="spacer"></div>
       <div class="contact">
         <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>
@@ -67,63 +79,73 @@
     <section class="hero">
       <img class="avatar" src="assets/profile.jpg" alt="Denis Kerec"/>
       <div>
-        <h1>Hi, I’m Denis — I build fast, reliable analytics systems.</h1>
+        <h1>Hi, I’m Denis — I build fast, reliable data systems.</h1>
         <div class="subtitle">
-          I’m a Lead BI Engineer with ~7 years of hands-on experience delivering low-latency analytics,
-          streaming pipelines, and robust BI across international teams (Asia, Middle East, Australia, Africa, US).
-          Currently at <strong>Ridango (Berg Group)</strong>, driving end-to-end data solutions: ingestion,
-          warehousing, APIs, and decision-grade dashboards.
+          Lead BI Engineer with 7+ years delivering realtime analytics, rock-solid reporting,
+          and production data pipelines. I lead a small team at <strong>Ridango (Berg Group)</strong>,
+          owning the journey from ingestion and modeling to APIs and executive dashboards.
+          I’ve shipped end-to-end solutions across Asia, the Middle East, Australia, Africa, and the US.
         </div>
-        <div class="chips">
-          <span class="chip">ClickHouse</span><span class="chip">StarRocks</span><span class="chip">PostgreSQL</span>
-          <span class="chip">MySQL</span><span class="chip">S3 / Data Lake</span><span class="chip">Kafka</span>
-          <span class="chip">Pulsar</span><span class="chip">Python / FastAPI</span><span class="chip">D3.js</span>
-          <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Jasper</span>
-          <span class="chip">AWS (strong)</span><span class="chip">On-prem or Cloud</span>
+        <div class="subtitle">
+          My focus: low-latency platforms, clear data models, and pragmatic BI that stakeholders trust.
+          I enjoy turning messy streams into clean, queryable facts — and making them fast.
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <h2>POC projects (more coming)</h2>
+    <h2>POC projects</h2>
     <div class="slider">
       <div class="slide">
         <div class="thumb">
-          <!-- Optional screenshot; or keep neutral background -->
           <img src="assets/crypto-thumb.jpg" alt="Crypto POC" onerror="this.style.display='none'"/>
         </div>
         <div>
           <h3>Crypto Realtime — ClickHouse POC</h3>
           <p>
-            Binance trades → ClickHouse via WebSocket ingestion &amp; FastAPI. D3.js frontend with
-            <em>Top Symbols, Buy vs Sell, Trades/min</em>, plus historical OHLCV. Designed to be fast,
-            lean, and inexpensive.
+            Ingest live Binance trades into ClickHouse (Python WebSocket, optional Kafka), serve via FastAPI,
+            and visualize with D3.js. The dashboard surfaces <em>Top Symbols</em>, <em>Buy vs Sell</em>,
+            <em>Trades/min</em>, plus historical OHLCV — built for speed, clarity, and low cost.
           </p>
           <ul class="bullets">
-            <li>Streaming pipelines (Kafka/WebSocket-style), batched inserts to ClickHouse</li>
-            <li>Cloud or on-prem; sub-second analytics</li>
+            <li>Buffered streaming inserts; schema designed for sub-second reads</li>
+            <li>Optional materialized views for minute bars and rollups</li>
+            <li>Cloud or on-prem deployment; simple, production-ready architecture</li>
           </ul>
           <div class="cta">
             <a class="btn" href="https://deniskerec.github.io/crypto-clickhouse-POC/" target="_blank" rel="noopener">Open demo</a>
-            <a class="btn" href="https://github.com/Deniskerec/crypto-clickhouse-POC" target="_blank" rel="noopener">View code</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ABOUT DETAIL -->
-    <h2>What I do</h2>
-    <p>
-      I design and operate analytics that don’t break: from high-volume log/event streams (millions/day) to finance-grade
-      reporting and executive dashboards. I work directly with stakeholders to nail requirements, model data clearly,
-      and ship the right KPIs. I’m comfortable end-to-end: ingestion (Kafka/Pulsar, WebSockets, CDC), storage
-      (ClickHouse, StarRocks, PostgreSQL, MySQL, S3 data lakes), serving layers (FastAPI/HTTP/SQL), and visualization
-      (Tableau, Power BI, D3.js, Jasper).
-    </p>
-    <p>
-      If you want something fast, reliable, and practical — reach me at
-      <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>.
-    </p>
+    <!-- SKILLS CHIPS -->
+    <section class="chips-section">
+      <h2>Stack I use</h2>
+      <div class="chips">
+        <span class="chip">ClickHouse</span>
+        <span class="chip">StarRocks</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">S3 / Data Lake</span>
+        <span class="chip">Kafka</span>
+        <span class="chip">Pulsar</span>
+        <span class="chip">Airflow</span>
+        <span class="chip">dbt</span>
+        <span class="chip">Python / FastAPI</span>
+        <span class="chip">D3.js</span>
+        <span class="chip">Tableau</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Jasper</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">Grafana</span>
+        <span class="chip">Prometheus</span>
+        <span class="chip">GitHub Actions</span>
+        <span class="chip">AWS</span>
+        <span class="chip">On-prem & Cloud</span>
+      </div>
+    </section>
 
     <footer>
       © <span id="y"></span> Denis Kerec · <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>
