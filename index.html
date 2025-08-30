@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Denis Kerec — Data Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Data engineering portfolio. Real-time crypto analytics with ClickHouse, FastAPI, and D3.js." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-dot"></div>
+        <span>Denis Kerec</span>
+      </div>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a class="btn btn-ghost" href="mailto:deniskerec1994@gmail.com">Email</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Real-time analytics, end-to-end.</h1>
+        <p class="lead">
+          I build streaming data pipelines and low-latency analytics with
+          <strong>ClickHouse</strong>, <strong>Python/FastAPI</strong>, and <strong>D3.js</strong>.
+        </p>
+        <div class="cta">
+          <a class="btn" href="/crypto-clickhouse-POC/">▶ Live Demo</a>
+          <a class="btn btn-ghost" href="https://github.com/Deniskerec/crypto-clickhouse-POC">GitHub Repo</a>
+          <a class="btn btn-ghost" href="mailto:deniskerec1994@gmail.com">Contact me</a>
+        </div>
+        <p class="note">Tip: the live demo shows a static preview on GitHub Pages. To see real streaming analytics, contact me and I’ll spin up the API collector.</p>
+      </div>
+      <div class="hero-card">
+        <div class="stat">
+          <span class="stat-label">Stack</span>
+          <span class="stat-value">ClickHouse • FastAPI • D3</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Ingest</span>
+          <span class="stat-value">Binance WebSocket → CH</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Dashboards</span>
+          <span class="stat-value">Realtime & Historical</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Highlighted Project</h2>
+
+      <article class="card project">
+        <div class="card-body">
+          <h3>Crypto Realtime — ClickHouse POC</h3>
+          <p>
+            Proof-of-concept real-time pipeline: Binance trades stream into
+            ClickHouse, served via FastAPI, visualized with D3.js. Includes
+            <em>Top Symbols</em>, <em>Buy vs Sell</em>, <em>Trades/min</em>, and
+            historical OHLCV aggregation.
+          </p>
+          <ul class="bullets">
+            <li>Stream ingest (WebSocket) → batch inserts to ClickHouse</li>
+            <li>Materialized aggregations for OHLCV</li>
+            <li>Frontend tabs: Live, Historical, Demo Static</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="/crypto-clickhouse-POC/">Open Demo</a>
+            <a class="btn btn-ghost" href="https://github.com/Deniskerec/crypto-clickhouse-POC">View Code</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="section alt">
+    <div class="container two-col">
+      <div>
+        <h2>About me</h2>
+        <p>
+          I’m a data engineer focused on fast, reliable analytics systems.
+          I love ClickHouse for sub-second queries, streaming ingestion, and
+          low-cost storage—perfect for product analytics, telemetry, and
+          fin-data dashboards.
+        </p>
+        <p>
+          If you’d like a live walkthrough or want me to adapt this POC to your dataset,
+          reach me at <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>.
+        </p>
+      </div>
+      <div class="about-card">
+        <h4>Capabilities</h4>
+        <ul>
+          <li>Ingestion: Kafka / WebSockets / APIs</li>
+          <li>Warehousing: ClickHouse, PostgreSQL</li>
+          <li>APIs: FastAPI</li>
+          <li>Viz: D3.js, Tableau</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Denis Kerec</div>
+      <div class="footer-links">
+        <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>
+        <a href="https://github.com/Deniskerec">GitHub</a>
+        <a href="/crypto-clickhouse-POC/">Demo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
