@@ -1,212 +1,137 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Denis Kerec — Lead BI Developer & Data Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Lead BI Developer with 7+ years international experience. Real-time analytics, pipelines, and data platforms with ClickHouse, Kafka, FastAPI, D3." />
-
+  <meta charset="utf-8"/>
+  <title>Denis Kerec — Lead BI Engineer (Realtime Analytics, ClickHouse)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <style>
     :root{
       --bg:#0b0f17; --panel:#0f1624; --fg:#e8eef7; --muted:#9bb0c9; --grid:#1a2332;
-      --accent:#4da3ff; --accent2:#7ac7ff; --ok:#2ecc71;
+      --up:#2ecc71; --down:#e74c3c; --accent:#4da3ff; --warn:#ffd166;
+      --chip:#142035; --chip-b:#2b3850;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .container{max-width:1080px;margin:0 auto;padding:0 18px}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:10;background:rgba(11,15,23,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--grid)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
-    .links{display:flex;gap:14px;align-items:center}
-    .btn{display:inline-block;background:var(--accent);color:#081019;border:1px solid var(--accent);padding:8px 12px;border-radius:10px;font-weight:600}
-    .btn.ghost{background:transparent;border:1px solid var(--grid);color:var(--fg)}
-
-    /* Hero */
-    .hero{padding:48px 0;border-bottom:1px solid var(--grid)}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
-    .lead{color:var(--muted)}
-    .cta{display:flex;gap:10px;margin:14px 0 0}
-    .photo-wrap{display:flex;justify-content:center}
-    .photo{
-      width:220px;height:220px;border-radius:50%;
-      border:2px solid var(--grid);object-fit:cover;background:#142033;
-    }
-    .photo.fallback{
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,#1a2332 0%,#0e1421 100%);
-      color:var(--muted);font-weight:700;letter-spacing:.3px
-    }
-
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
+    /* Header / hero */
+    header{display:flex;align-items:center;gap:22px;padding:18px 0 8px;border-bottom:1px solid var(--grid)}
+    .brand{font-weight:700;letter-spacing:.2px}
+    .brand small{display:block;color:var(--muted);font-weight:500}
+    .spacer{flex:1}
+    .contact a{margin-left:14px}
+    .hero{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:center;padding:24px 0}
+    .avatar{width:120px;height:120px;border-radius:50%;border:2px solid var(--grid);object-fit:cover;background:#141a26}
+    h1{margin:0 0 6px;font-size:28px}
+    .subtitle{color:var(--muted);margin-bottom:14px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{background:var(--chip);border:1px solid var(--grid);padding:6px 10px;border-radius:999px;font-size:12px}
+    /* Section titles */
+    h2{margin:24px 0 12px;font-size:22px}
     /* Slider */
-    .section{padding:42px 0}
-    h2{margin:0 0 12px 0}
-    .slider{position:relative;background:var(--panel);border:1px solid var(--grid);border-radius:14px;overflow:hidden}
-    .slides{display:flex;transition:transform .4s ease}
-    .slide{min-width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;padding:18px}
-    .shot{width:100%;aspect-ratio:16/9;border:1px solid var(--grid);border-radius:10px;background:#0e1421;object-fit:cover}
-    .bullet{margin:8px 0 0 18px}
-    .controls{position:absolute;inset:auto 0 10px 0;display:flex;justify-content:center;gap:8px}
-    .dotbtn{width:8px;height:8px;border-radius:50%;border:1px solid var(--grid);background:#0e1421;cursor:pointer}
-    .dotbtn.active{background:var(--accent)}
-    .arrow{position:absolute;top:50%;transform:translateY(-50%);background:#0e1421;border:1px solid var(--grid);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
-    .arrow:hover{filter:brightness(1.1)}
-    .arrow.left{left:10px} .arrow.right{right:10px}
-
-    .photo{
-  width:220px;
-  height:220px;
-  border-radius:50%;   /* makes it round */
-  border:2px solid var(--grid);
-  object-fit:cover;    /* zoom/crop instead of squish */
-  background:#142033;
-}
-
+    .slider{position:relative;background:var(--panel);border:1px solid var(--grid);border-radius:16px;padding:18px;overflow:hidden}
+    .slide{display:grid;grid-template-columns: 1.1fr 1fr;gap:24px;align-items:center}
+    .thumb{aspect-ratio:16/9;background:#0e1421;border:1px solid var(--grid);border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;opacity:.95}
+    .slide h3{margin:.25rem 0 .5rem;font-size:20px}
+    .bullets{color:var(--muted);margin:10px 0 14px}
+    .bullets li{margin:.25rem 0}
+    .cta{display:flex;gap:10px}
+    .btn{background:#18304d;border:1px solid var(--grid);color:#dce9ff;padding:8px 12px;border-radius:10px;display:inline-flex;align-items:center;gap:6px}
+    .btn:hover{filter:brightness(1.1);text-decoration:none}
     /* Footer */
-    footer{border-top:1px solid var(--grid);padding:16px 0;margin-top:28px}
-    .foot{display:flex;justify-content:space-between;align-items:center}
-    @media (max-width:900px){
-      .hero-grid,.slide{grid-template-columns:1fr}
+    footer{margin:30px 0 10px;color:var(--muted);font-size:14px}
+    /* Responsive */
+    @media (max-width: 900px){
+      .slide{grid-template-columns:1fr;gap:14px}
+      .hero{grid-template-columns:90px 1fr}
+      .avatar{width:90px;height:90px}
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <div class="brand"><span class="dot"></span> <span>Denis Kerec</span></div>
-      <div class="links">
-        <a href="mailto:deniskerec1994@gmail.com" class="btn ghost">Email</a>
-        <a href="https://www.linkedin.com/in/denis-kerec-35a997150/" class="btn ghost" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/Deniskerec" class="btn ghost" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  </header>
+  <div class="wrap">
 
-  <!-- Hero / About me -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <h1>Lead BI Developer & Data Engineer</h1>
-        <p class="lead">
-          I’ve spent the last <strong>7+ years</strong> building analytics platforms and real-time data pipelines
-          across <strong>Asia, the Middle East, Africa, Australia, and the USA</strong>.
-          I partner with stakeholders to turn business goals into fast, reliable data systems.
-        </p>
-        <p class="lead">
-          Tech I like: <strong>ClickHouse</strong> (sub-second analytics), <strong>PostgreSQL</strong>, <strong>MySQL</strong>,
-          <strong>Kafka</strong>, <strong>Pulsar</strong>, <strong>FastAPI</strong>, <strong>AWS S3</strong>, and D3.js —
-          delivered on <strong>cloud</strong> or <strong>on-prem</strong>.
-        </p>
-        <p class="lead">
-          I’ve worked with <strong>financial data</strong> (including state finance teams), high-volume
-          <strong>real-time logs</strong> (millions/day), and management dashboards that execs actually use.
-        </p>
-        <div class="cta">
-          <a class="btn" href="/crypto-clickhouse-POC/">Open Crypto POC</a>
-          <a class="btn ghost" href="mailto:deniskerec1994@gmail.com">Let’s talk</a>
-        </div>
-      </div>
-
-      <div class="photo-wrap">
-        <!-- Use your own copy of the LinkedIn photo -->
-        <img id="headshot" class="photo" src="assets/profile.jpg" alt="Denis Kerec headshot"
-             onerror="this.replaceWith(makeFallback())">
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects slider -->
-  <section class="section">
-    <div class="container">
-      <h2>POC projects (more coming)</h2>
-      <div class="slider" id="slider">
-        <button class="arrow left" aria-label="Previous" onclick="go(-1)">‹</button>
-        <div class="slides" id="slides">
-          <!-- Slide 1: Crypto + ClickHouse -->
-          <article class="slide">
-            <img class="shot" src="crypto-clickhouse-POC/preview.png" alt="Crypto realtime dashboard preview"
-                 onerror="this.style.background='linear-gradient(135deg,#0e1421,#0b0f17)'; this.style.border='1px dashed var(--grid)'; this.alt='Crypto POC';">
-            <div>
-              <h3>Crypto Realtime — ClickHouse POC</h3>
-              <p>
-                Binance trades → ClickHouse via WebSocket ingestion & FastAPI. D3.js frontend with
-                <em>Top Symbols</em>, <em>Buy vs Sell</em>, <em>Trades/min</em>, and historical OHLCV.
-              </p>
-              <ul class="bullet">
-                <li>Streaming pipelines (Kafka/WebSocket-style), batch inserts to ClickHouse</li>
-                <li>Cloud or on-prem; low-latency analytics</li>
-              </ul>
-              <p style="margin-top:10px">
-                <a class="btn" href="/crypto-clickhouse-POC/">Open demo</a>
-                <a class="btn ghost" href="https://github.com/Deniskerec/crypto-clickhouse-POC" target="_blank" rel="noopener">View code</a>
-              </p>
-            </div>
-          </article>
-
-          <!-- Duplicate .slide blocks here for more projects later -->
-        </div>
-        <button class="arrow right" aria-label="Next" onclick="go(1)">›</button>
-        <div class="controls" id="dots"></div>
-      </div>
-
-      <p style="color:var(--muted);margin-top:10px">
-        This carousel will showcase additional POCs soon — financial analytics, event pipelines, and more.
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container foot">
-      <div>© <span id="year"></span> Denis Kerec — Real-time analytics, end-to-end.</div>
-      <div>
+    <header>
+      <div class="brand">Denis Kerec <small>Lead BI Engineer — Realtime Analytics</small></div>
+      <div class="spacer"></div>
+      <div class="contact">
         <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>
+        <a href="https://github.com/Deniskerec" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/denis-kerec-35a997150/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <img class="avatar" src="assets/profile.jpg" alt="Denis Kerec"/>
+      <div>
+        <h1>Hi, I’m Denis — I build fast, reliable analytics systems.</h1>
+        <div class="subtitle">
+          I’m a Lead BI Engineer with ~7 years of hands-on experience delivering low-latency analytics,
+          streaming pipelines, and robust BI across international teams (Asia, Middle East, Australia, Africa, US).
+          Currently at <strong>Ridango (Berg Group)</strong>, driving end-to-end data solutions: ingestion,
+          warehousing, APIs, and decision-grade dashboards.
+        </div>
+        <div class="chips">
+          <span class="chip">ClickHouse</span><span class="chip">StarRocks</span><span class="chip">PostgreSQL</span>
+          <span class="chip">MySQL</span><span class="chip">S3 / Data Lake</span><span class="chip">Kafka</span>
+          <span class="chip">Pulsar</span><span class="chip">Python / FastAPI</span><span class="chip">D3.js</span>
+          <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Jasper</span>
+          <span class="chip">AWS (strong)</span><span class="chip">On-prem or Cloud</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <h2>POC projects (more coming)</h2>
+    <div class="slider">
+      <div class="slide">
+        <div class="thumb">
+          <!-- Optional screenshot; or keep neutral background -->
+          <img src="assets/crypto-thumb.jpg" alt="Crypto POC" onerror="this.style.display='none'"/>
+        </div>
+        <div>
+          <h3>Crypto Realtime — ClickHouse POC</h3>
+          <p>
+            Binance trades → ClickHouse via WebSocket ingestion &amp; FastAPI. D3.js frontend with
+            <em>Top Symbols, Buy vs Sell, Trades/min</em>, plus historical OHLCV. Designed to be fast,
+            lean, and inexpensive.
+          </p>
+          <ul class="bullets">
+            <li>Streaming pipelines (Kafka/WebSocket-style), batched inserts to ClickHouse</li>
+            <li>Cloud or on-prem; sub-second analytics</li>
+          </ul>
+          <div class="cta">
+            <a class="btn" href="https://deniskerec.github.io/crypto-clickhouse-POC/" target="_blank" rel="noopener">Open demo</a>
+            <a class="btn" href="https://github.com/Deniskerec/crypto-clickhouse-POC" target="_blank" rel="noopener">View code</a>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- ABOUT DETAIL -->
+    <h2>What I do</h2>
+    <p>
+      I design and operate analytics that don’t break: from high-volume log/event streams (millions/day) to finance-grade
+      reporting and executive dashboards. I work directly with stakeholders to nail requirements, model data clearly,
+      and ship the right KPIs. I’m comfortable end-to-end: ingestion (Kafka/Pulsar, WebSockets, CDC), storage
+      (ClickHouse, StarRocks, PostgreSQL, MySQL, S3 data lakes), serving layers (FastAPI/HTTP/SQL), and visualization
+      (Tableau, Power BI, D3.js, Jasper).
+    </p>
+    <p>
+      If you want something fast, reliable, and practical — reach me at
+      <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>.
+    </p>
+
+    <footer>
+      © <span id="y"></span> Denis Kerec · <a href="mailto:deniskerec1994@gmail.com">deniskerec1994@gmail.com</a>
+    </footer>
+  </div>
 
   <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Fallback avatar block if assets/profile.jpg is missing
-    function makeFallback(){
-      const d = document.createElement('div');
-      d.className = 'photo fallback';
-      d.textContent = 'Profile photo';
-      d.style.width = '220px'; d.style.height='220px'; d.style.borderRadius='50%';
-      d.style.border='2px solid var(--grid)';
-      return d;
-    }
-
-    // Simple slider
-    const slides = document.getElementById('slides');
-    const dots = document.getElementById('dots');
-    let idx = 0;
-    const total = slides.children.length;
-
-    function renderDots(){
-      dots.innerHTML = '';
-      for(let i=0;i<total;i++){
-        const b = document.createElement('button');
-        b.className = 'dotbtn' + (i===idx ? ' active':'');
-        b.onclick = ()=>{ idx=i; update(); };
-        dots.appendChild(b);
-      }
-    }
-    function update(){
-      slides.style.transform = `translateX(-${idx*100}%)`;
-      [...dots.children].forEach((d,i)=>d.classList.toggle('active', i===idx));
-    }
-    function go(dir){
-      idx = (idx + dir + total) % total;
-      update();
-    }
-    renderDots(); update();
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
